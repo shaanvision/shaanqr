@@ -10,27 +10,36 @@ export const metadata: Metadata = {
   metadataBase: new URL(domain),
   title,
   description,
+  applicationName: 'ShaanQR',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'ShaanQR',
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
+    type: 'website',
+    siteName: 'ShaanQR',
     title,
     description,
     url: domain,
-    siteName: 'ShaanQR',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        url: '/shaanqr300.png',
+        width: 300,
+        height: 300,
         alt: title,
       },
     ],
     locale: 'tr_TR',
-    type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title,
     description,
-    images: ['/og-image.png'],
+    images: [`${domain}/shaanqr300.png`],
   },
   alternates: {
     canonical: '/',
@@ -98,13 +107,21 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="icon" href="/shaanqr300.png" type="image/png" />
-        <link rel="shortcut icon" href="/shaanqr300.png" type="image/png" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-config" content="/icons/browserconfig.xml" />
+        <meta name="msapplication-TileColor" content="#560a86" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="theme-color" content="#560a86" />
+        
         <link rel="apple-touch-icon" href="/shaanqr300.png" />
+        <link rel="manifest" href="/manifest.json" crossOrigin="use-credentials" />
+        <link rel="shortcut icon" href="/shaanqr300.png" />
+        
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />

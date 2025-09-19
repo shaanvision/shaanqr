@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Github, Heart } from 'lucide-react';
 import { Button } from './ui/button';
+import PWAInstallButton from './pwa-install-button';
 
 const GitlabIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <svg
@@ -38,6 +39,7 @@ export default function Header() {
           </div>
         </Link>
         <div className="flex items-center gap-2">
+            <PWAInstallButton />
             <Button asChild variant="ghost" size="icon">
                 <Link href="https://github.com/shaanvision/shaanqr" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository">
                     <Github className="h-5 w-5" />

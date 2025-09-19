@@ -20,8 +20,14 @@ export default function QRCodePreview({ options }: QRCodePreviewProps) {
   const { toast } = useToast();
   const [isCopied, setIsCopied] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showShare, setShowShare] = useState(false);
 
   useEffect(() => {
+    // Web Share API'sının kullanılabilir olup olmadığını yalnızca istemci tarafında kontrol et
+    if (typeof navigator !== 'undefined' && navigator.share) {
+      setShowShare(true);
+    }
+    
     const importModule = async () => {
       const QRCodeStyling = (await import('qr-code-styling')).default;
       setQrCodeStyling(new QRCodeStyling());
@@ -117,7 +123,7 @@ export default function QRCodePreview({ options }: QRCodePreviewProps) {
         <Button onClick={onCopyToClipboard} variant="secondary">
             {isCopied ? <Check /> : <Copy />} {isCopied ? 'Kopyalandı!' : 'Kopyala'}
         </Button>
-        {typeof navigator !== 'undefined' && navigator.share && (
+        {showShare && (
             <Button onClick={onShare} variant="secondary"><Share2 /> Paylaş</Button>
         )}
       </CardFooter>

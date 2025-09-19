@@ -1,0 +1,22 @@
+{
+  "name": "ShaanQR - Ücretsiz QR Kod Oluşturucu",
+  "short_name": "ShaanQR",
+  "description": "Ücretsiz QR kodları oluşturun, özelleştirin ve indirin. URL, metin, Wi-Fi ve daha fazlası için özel QR kodları anında hazırlayın.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#560a86",
+  "icons": [
+    {
+      "src": "/shaanqr300.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/shaanqr300.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
